@@ -12,64 +12,130 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import lombok.Getter;
-import lombok.Setter;
-
-
 @Entity
 @Table(name = "etudes")
-public class Etude implements Serializable{
+public class Etude implements Serializable, Base{
     
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
-    @Getter
-    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
-    @Getter
-    @Setter
     @NotBlank
     @Column(nullable = false)
     private String libelle;
     
-    @Getter
-    @Setter
-    @NotBlank
+    @NotNull
     @Column(nullable = false)
     private Date dateDebut;
     
-    @Getter
-    @Setter
     private Date dateFin;
     
-    @Getter
-    @Setter
     private Date dateAffectation;
     
-    @Getter
-    @Setter
     @NotNull
     @Column(nullable = false)
     private int budget;
     
-    @Getter
-    @Setter
     private String status;
     
-    @Getter
-    @Setter
     private String satisfaction;
     
-    @Getter
-    @Setter
     private String commentaire;
 
-    public Etude() {
+    public Etude() {}
+
+    public Etude update(Object o){
+        Etude p = (Etude)o;
+        this.budget = p.budget;
+        this.commentaire = p.commentaire;
+        this.dateAffectation = p.dateAffectation;
+        this.dateDebut = p.dateDebut;
+        this.dateFin = p.dateFin;
+        this.satisfaction = p.satisfaction;
+        this.status = p.status;
+        this.libelle = p.libelle;
+        return this;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public Date getDateAffectation() {
+        return dateAffectation;
+    }
+
+    public void setDateAffectation(Date dateAffectation) {
+        this.dateAffectation = dateAffectation;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSatisfaction() {
+        return satisfaction;
+    }
+
+    public void setSatisfaction(String satisfaction) {
+        this.satisfaction = satisfaction;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
     
