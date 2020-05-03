@@ -49,6 +49,16 @@ public class Etude implements Serializable, Base{
 
     private String typeEtude;
 
+    private String periodicite;
+
+    /**
+     * String containing:
+     * Disponibilite 1-5
+     * Qualite livrable 1-5
+     * Respect delais 1-5
+     */
+    private String niveauSatisfaction;
+
     public Etude() {}
 
     public Etude update(Object o){
@@ -60,8 +70,10 @@ public class Etude implements Serializable, Base{
         this.dateDebut = p.dateDebut;
         this.typeEtude = p.typeEtude;
         this.commentaire = p.commentaire;
+        this.periodicite = p.periodicite;
         this.satisfaction = p.satisfaction;
         this.dateAffectation = p.dateAffectation;
+        this.niveauSatisfaction = p.niveauSatisfaction;
         return this;
     }
 
@@ -149,5 +161,20 @@ public class Etude implements Serializable, Base{
         this.typeEtude = typeEtude;
     }
 
+    public String getPeriodicite() {
+        return periodicite;
+    }
+
+    public void setPeriodicite(String periodicite) {
+        this.periodicite = periodicite;
+    }
+
+    public String getNiveauSatisfaction() {
+        return niveauSatisfaction;
+    }
+
+    public void setNiveauSatisfaction(String niveauSatisfaction) {
+        this.niveauSatisfaction = niveauSatisfaction;
+    }
     
 }
