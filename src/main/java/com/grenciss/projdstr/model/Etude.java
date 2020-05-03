@@ -54,14 +54,14 @@ public class Etude implements Serializable, Base{
     public Etude update(Object o){
         Etude p = (Etude)o;
         this.budget = p.budget;
-        this.commentaire = p.commentaire;
-        this.dateAffectation = p.dateAffectation;
-        this.dateDebut = p.dateDebut;
-        this.dateFin = p.dateFin;
-        this.satisfaction = p.satisfaction;
         this.status = p.status;
+        this.dateFin = p.dateFin;
         this.libelle = p.libelle;
+        this.dateDebut = p.dateDebut;
         this.typeEtude = p.typeEtude;
+        this.commentaire = p.commentaire;
+        this.satisfaction = p.satisfaction;
+        this.dateAffectation = p.dateAffectation;
         return this;
     }
 
