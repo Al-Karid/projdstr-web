@@ -2,12 +2,16 @@ package com.grenciss.projdstr.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -36,6 +40,10 @@ public class Offre implements Serializable, Base{
     private Date dateAffectation;
     
     private String commentaire;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
+    private Set<Prestataire> prestataires;
 
     @Override
     public Offre update(Object o) {
@@ -99,5 +107,14 @@ public class Offre implements Serializable, Base{
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
+
+    public Set<Prestataire> getPrestataires() {
+        return prestataires;
+    }
+
+    public void setPrestataires(Set<Prestataire> prestataires) {
+        this.prestataires = prestataires;
+    }
+    
     
 }
