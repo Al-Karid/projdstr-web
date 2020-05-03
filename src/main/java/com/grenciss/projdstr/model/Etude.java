@@ -47,6 +47,8 @@ public class Etude implements Serializable, Base{
     
     private String commentaire;
 
+    private String typeEtude;
+
     public Etude() {}
 
     public Etude update(Object o){
@@ -59,6 +61,7 @@ public class Etude implements Serializable, Base{
         this.satisfaction = p.satisfaction;
         this.status = p.status;
         this.libelle = p.libelle;
+        this.typeEtude = p.typeEtude;
         return this;
     }
 
@@ -136,6 +139,14 @@ public class Etude implements Serializable, Base{
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+
+    public String getTypeEtude() {
+        return typeEtude;
+    }
+
+    public void setTypeEtude(String typeEtude) {
+        this.typeEtude = typeEtude;
     }
 
     
