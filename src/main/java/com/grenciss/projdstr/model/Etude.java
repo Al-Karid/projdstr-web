@@ -3,6 +3,7 @@ package com.grenciss.projdstr.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,13 +34,13 @@ public class Etude implements Serializable{
     @Getter
     @Setter
     @NotBlank
-    @NotNull
+    @Column(nullable = false)
     private String libelle;
     
     @Getter
     @Setter
     @NotBlank
-    @NotNull
+    @Column(nullable = false)
     private Date dateDebut;
     
     @Getter
@@ -53,7 +54,7 @@ public class Etude implements Serializable{
     @Getter
     @Setter
     @NotNull
-    @NotBlank
+    @Column(nullable = false)
     private int budget;
     
     @Getter
