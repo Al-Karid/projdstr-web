@@ -1,13 +1,17 @@
 package com.grenciss.projdstr.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -49,8 +53,9 @@ public class Prestataire implements Serializable, Base{
     
     private String commentaire;
 
-    @ManyToMany(mappedBy = "prestataires")
-    private Set<Offre> offres;
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable
+    private Set<Offre> offres = new HashSet<>();
     
     public Prestataire(){}
 
