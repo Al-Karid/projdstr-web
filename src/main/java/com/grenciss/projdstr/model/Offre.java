@@ -5,12 +5,14 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -41,7 +43,8 @@ public class Offre implements Serializable, Base{
     
     private String commentaire;
 
-    @ManyToMany(mappedBy = "offres", fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable
     private Set<Prestataire> prestataires = new HashSet<>();
 
     @Override
@@ -113,6 +116,16 @@ public class Offre implements Serializable, Base{
 
     public void setPrestataires(Set<Prestataire> prestataires) {
         this.prestataires = prestataires;
+    }
+
+    public Offre(){}
+
+    public Offre(@NotBlank String libelle, Date dateDebut, Date dateFin, Date dateAffectation, String commentaire) {
+        this.libelle = libelle;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.dateAffectation = dateAffectation;
+        this.commentaire = commentaire;
     }
     
     

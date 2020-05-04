@@ -4,17 +4,17 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="prestataires")
@@ -53,8 +53,8 @@ public class Prestataire implements Serializable, Base{
     
     private String commentaire;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinTable
+    @JsonBackReference
+    @ManyToMany(mappedBy = "prestataires", fetch = FetchType.LAZY)
     private Set<Offre> offres = new HashSet<>();
     
     public Prestataire(){}
@@ -155,6 +155,18 @@ public class Prestataire implements Serializable, Base{
 
     public void setOffres(Set<Offre> offres) {
         this.offres = offres;
+    }
+
+    public Prestataire(@NotBlank String email, @NotBlank String libelle, String siege, @NotBlank String persAContacter1,
+            String persAContacter2, @NotBlank String contact1, String contact2, String commentaire) {
+        this.email = email;
+        this.libelle = libelle;
+        this.siege = siege;
+        this.persAContacter1 = persAContacter1;
+        this.persAContacter2 = persAContacter2;
+        this.contact1 = contact1;
+        this.contact2 = contact2;
+        this.commentaire = commentaire;
     }
 
     
