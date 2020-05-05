@@ -1,5 +1,7 @@
 package com.grenciss.projdstr.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import com.grenciss.projdstr.exception.ResourceNotFoundException;
@@ -33,5 +35,12 @@ public class ThymleafUIController {
     public String savePrestataire(@Valid Prestataire prestataire, BindingResult result, Model model){
         prestataires.save(prestataire);
         return "redirect:/";
+    }
+
+    @GetMapping("/liste/prestataire")
+    public String listPrestataire(Model model){
+        List<Prestataire> listPrestataire = prestataires.findAll();
+        model.addAttribute("prestataires", listPrestataire);
+        return "list-prestataire";
     }
 }
