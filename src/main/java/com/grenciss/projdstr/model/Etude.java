@@ -2,12 +2,18 @@ package com.grenciss.projdstr.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -175,4 +181,17 @@ public class Etude implements Serializable, Base {
         this.niveauSatisfaction = niveauSatisfaction;
     }
 
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable
+    private Set<Prestataire> prestataires = new HashSet<>();
+
+    public Set<Prestataire> getPrestataires() {
+        return prestataires;
+    }
+
+    public void setPrestataires(Set<Prestataire> prestataires) {
+        this.prestataires = prestataires;
+    }
+
+    
 }

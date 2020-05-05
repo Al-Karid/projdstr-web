@@ -55,7 +55,7 @@ public class Prestataire implements Serializable, Base{
 
     @JsonBackReference
     @ManyToMany(mappedBy = "prestataires", fetch = FetchType.LAZY)
-    private Set<Offre> offres = new HashSet<>();
+    private Set<Etude> etudes = new HashSet<>();
     
     public Prestataire(){}
 
@@ -149,12 +149,12 @@ public class Prestataire implements Serializable, Base{
         this.commentaire = commentaire;
     }
 
-    public Set<Offre> getOffres() {
-        return offres;
+    public Set<Etude> getEtudes() {
+        return etudes;
     }
 
-    public void setOffres(Set<Offre> offres) {
-        this.offres = offres;
+    public void setEtudes(Set<Etude> etudes) {
+        this.etudes = etudes;
     }
 
     public Prestataire(@NotBlank String email, @NotBlank String libelle, String siege, @NotBlank String persAContacter1,
