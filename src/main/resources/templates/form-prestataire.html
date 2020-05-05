@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter prestataire</title>
+</head>
+<body>
+    <form 
+        action="#" 
+        method="POST"
+        th:action="@{/save/prestataire}" 
+        th:object="${prestataire}">
+    
+        <label for="libelle">Libelle</label>
+        <input type="text" id="libelle" th:field="*{libelle}" placeholder="Libelle">
+        <br>
+        <label for="email">Email</label>
+        <input type="text" id="email" th:field="*{email}" placeholder="Email">
+        <br>
+        <label for="NomContact1">Personne a contacter 1</label>
+        <input type="text" id="persAContacter1" th:field="*{persAContacter1}" placeholder="personne Contacter 1">
+        <br>
+        <label for="contact1">Contact 1</label>
+        <input type="text" id="contact1" th:field="*{contact1}" placeholder="Contact 1">
+        <br>
+        <label for="NomContact2">Personne a contacter 2</label>
+        <input type="text" id="persAContacter2" th:field="*{persAContacter2}" placeholder="personne Contacter 2">
+        <br>
+        <label for="contact2">Contacte 2</label>
+        <input type="text" id="contact2" th:field="*{contact2}" placeholder="Contact 2">
+        
+        <input type="submit" value="Enregistrer">   
+    </form>
+</body>
+</html>
