@@ -8,16 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "etudes")
-public class Etude implements Serializable, Base{
-    
+public class Etude implements Serializable, Base {
+
     /**
      *
      */
@@ -26,27 +24,27 @@ public class Etude implements Serializable, Base{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     @NotBlank
     @Column(nullable = false)
     private String libelle;
-    
+
     @NotNull
     @Column(nullable = false)
     private Date dateDebut;
-    
+
     private Date dateFin;
-    
+
     private Date dateAffectation;
-    
+
     @NotNull
     @Column(nullable = false)
     private int budget;
-    
+
     private String status;
-    
+
     private String satisfaction;
-    
+
     private String commentaire;
 
     private String typeEtude;
@@ -54,17 +52,15 @@ public class Etude implements Serializable, Base{
     private String periodicite;
 
     /**
-     * String containing:
-     * Disponibilite 1-5
-     * Qualite livrable 1-5
-     * Respect delais 1-5
+     * String containing: Disponibilite 1-5 Qualite livrable 1-5 Respect delais 1-5
      */
     private String niveauSatisfaction;
 
-    public Etude() {}
+    public Etude() {
+    }
 
-    public Etude update(Object o){
-        Etude p = (Etude)o;
+    public Etude update(Object o) {
+        Etude p = (Etude) o;
         this.budget = p.budget;
         this.status = p.status;
         this.dateFin = p.dateFin;
@@ -178,16 +174,5 @@ public class Etude implements Serializable, Base{
     public void setNiveauSatisfaction(String niveauSatisfaction) {
         this.niveauSatisfaction = niveauSatisfaction;
     }
-    
-    @ManyToOne
-    @JoinColumn
-    public Prestataire prestataire;
 
-    public Prestataire getPrestataire() {
-        return prestataire;
-    }
-
-    public void setPrestataire(Prestataire prestataire) {
-        this.prestataire = prestataire;
-    }
 }

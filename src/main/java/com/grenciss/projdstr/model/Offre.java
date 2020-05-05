@@ -2,24 +2,18 @@ package com.grenciss.projdstr.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "offres")
-public class Offre implements Serializable, Base{
+public class Offre implements Serializable, Base {
 
     /**
      *
@@ -27,29 +21,25 @@ public class Offre implements Serializable, Base{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     @NotBlank
     @Column(nullable = false)
     private String libelle;
-    
+
     @Column(nullable = false)
     private Date dateDebut;
-    
-    private Date dateFin;
-    
-    private Date dateAffectation;
-    
-    private String commentaire;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinTable
-    private Set<Prestataire> prestataires = new HashSet<>();
+    private Date dateFin;
+
+    private Date dateAffectation;
+
+    private String commentaire;
 
     @Override
     public Offre update(Object o) {
-        Offre p = (Offre)o;
+        Offre p = (Offre) o;
         this.libelle = p.libelle;
         this.dateFin = p.dateFin;
         this.dateDebut = p.dateDebut;
@@ -110,15 +100,8 @@ public class Offre implements Serializable, Base{
         this.commentaire = commentaire;
     }
 
-    public Set<Prestataire> getPrestataires() {
-        return prestataires;
+    public Offre() {
     }
-
-    public void setPrestataires(Set<Prestataire> prestataires) {
-        this.prestataires = prestataires;
-    }
-
-    public Offre(){}
 
     public Offre(@NotBlank String libelle, Date dateDebut, Date dateFin, Date dateAffectation, String commentaire) {
         this.libelle = libelle;
@@ -127,6 +110,5 @@ public class Offre implements Serializable, Base{
         this.dateAffectation = dateAffectation;
         this.commentaire = commentaire;
     }
-    
-    
+
 }
