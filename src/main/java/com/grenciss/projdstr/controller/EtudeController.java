@@ -31,6 +31,11 @@ public class EtudeController {
         return etudes.findAll();
     }
 
+    @GetMapping("/get/{id}")
+    public Etude getEtudeById(@PathVariable("id") long id){
+        return etudes.findById(id).orElseThrow(()-> new ResourceNotFoundException("Etude", "id", id));
+    }
+
     @PostMapping("/save")
     public Etude saveEtude(@Valid @RequestBody Etude etude){
         return etudes.save(etude);

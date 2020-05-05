@@ -31,6 +31,11 @@ public class PrestataireController {
         return prestataires.findAll();
     }
 
+    @GetMapping("/get/{id}")
+    public Prestataire getOneById(@PathVariable("id") long id) {
+        return prestataires.findById(id).orElseThrow(()-> new ResourceNotFoundException("Prestataire", "id", id));
+    }
+
     @PostMapping("/save")
     public Prestataire savePrestataire(@Valid @RequestBody Prestataire prestataire){
         return prestataires.save(prestataire);
