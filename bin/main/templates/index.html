@@ -54,49 +54,18 @@
     <!-- Action list -->
     <div class="card text-white bg-light mb-3">
         <div class="card-body">
-            <button type="button" class="btn btn-primary">Ajouter prestataire</button>
-            <button type="button" class="btn btn-primary">Ajouter etude</button>
+            <div class="card-title" style="color: black; text-decoration: underline;"><h3>Prestataires</h3></div>
+            <a th:href="@{/liste/prestataires}" class="btn btn-primary" role="button">Liste</a>
+            <a href="#" class="btn btn-primary" role="button">Nouveau</a>
         </div>
     </div>
-
-    <!-- Liste des prestataires -->
-    <div class="card text-left">
+    <div class="card text-white bg-light mb-3">
         <div class="card-body">
-            <p>List des prestataires</p>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <div class="card-title" style="color: black; text-decoration: underline;"><h3>Etudes</h3></div>
+            <a th:href="@{/liste/etudes}" class="btn btn-primary" role="button">Liste</a>
+            <a href="#" class="btn btn-primary" role="button">Nouveau</a>
         </div>
     </div>
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

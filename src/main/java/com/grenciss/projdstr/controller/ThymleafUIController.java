@@ -45,7 +45,7 @@ public class ThymleafUIController {
         return "redirect:/";
     }
 
-    @GetMapping("/liste/prestataire")
+    @GetMapping("/liste/prestataires")
     public String listPrestataire(Model model){
         List<Prestataire> listPrestataire = prestataires.findAll();
         model.addAttribute("prestataires", listPrestataire);
@@ -79,7 +79,7 @@ public class ThymleafUIController {
         return "details-prestataire";
     }
 
-    @GetMapping("/liste/etude")
+    @GetMapping("/liste/etudes")
     public String listeEtude(Model model){
         List<Etude> allEtudes = etudes.findAll();
         model.addAttribute("etudes", allEtudes);
