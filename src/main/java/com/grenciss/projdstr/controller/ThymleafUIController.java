@@ -53,7 +53,7 @@ public class ThymleafUIController {
     }
 
     @GetMapping("/details/prestataire/{id}")
-    public String detailPrestataire(@PathVariable("id") long id ,Model model){
+    public String detailsPrestataire(@PathVariable("id") long id ,Model model){
         
         Prestataire p = prestataires.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", id));
         
@@ -76,7 +76,7 @@ public class ThymleafUIController {
         
         model.addAttribute("p", p);
         model.addAttribute("etudes", allPrestataireEtudes);
-        return "detail-prestataire";
+        return "details-prestataire";
     }
 
     @GetMapping("/liste/etude")
@@ -84,5 +84,12 @@ public class ThymleafUIController {
         List<Etude> allEtudes = etudes.findAll();
         model.addAttribute("etudes", allEtudes);
         return "liste-etude";
+    }
+
+    @GetMapping("/details/etude/{id}")
+    public String detailsEtude(@PathVariable("id") long id, Model model){
+        Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));
+        model.addAttribute("etude", etude);
+        return "details-etude";
     }
 }
