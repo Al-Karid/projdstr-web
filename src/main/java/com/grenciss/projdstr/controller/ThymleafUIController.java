@@ -1,11 +1,15 @@
 package com.grenciss.projdstr.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
 import com.grenciss.projdstr.exception.ResourceNotFoundException;
+import com.grenciss.projdstr.model.Etude;
 import com.grenciss.projdstr.model.Prestataire;
+import com.grenciss.projdstr.repository.EtudeRepository;
 import com.grenciss.projdstr.repository.PrestataireRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +25,9 @@ public class ThymleafUIController {
     
     @Autowired
     PrestataireRepository prestataires;
+
+    @Autowired
+    EtudeRepository etudes;
 
     @GetMapping("/")
     public String index(){
@@ -47,8 +54,28 @@ public class ThymleafUIController {
 
     @GetMapping("/detail/prestataire/{id}")
     public String detailPrestataire(@PathVariable("id") long id ,Model model){
+        
         Prestataire p = prestataires.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", id));
+        
+        //Recuperation des etudes d'un prestataires
+        List<Etude> allEtudes = etudes.findAll();
+        List<Long> etudesId = new ArrayList<>();
+        for (Etude etude : allEtudes) {
+            Set<Prestataire> allPrestataires = etude.getPrestataires();
+            for (Prestataire allP : allPrestataires) {
+                if (allP.getId()==id) {
+                    etudesId.add(etude.getId());
+                }
+            }
+        }
+        List<Etude> allPrestataireEtudes = new ArrayList<>();
+        for (Long eid : etudesId) {
+            allPrestataireEtudes.add(etudes.findById(eid).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", eid)));
+        }
+        
+        
         model.addAttribute("p", p);
+        model.addAttribute("etudes", allPrestataireEtudes);
         return "detail-prestataire";
     }
 }

@@ -321,29 +321,21 @@ $(document).ready(function(){
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Phone</th>
+                                <th>Libelle</th>
+                                <th>Date Debut</th>
+                                <th>Date Fin</th>
+                                <th>Budget</th>
+                                <th>Satisfaction</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Thomas Hardy</td>
-                                <td>thomashardy@mail.com</td>
-                                <td>89 Chiaroscuro Rd, Portland, USA</td>
-                                <td>(171) 555-2222</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Dominique Perrier</td>
-                                <td>dominiqueperrier@mail.com</td>
-                                <td>Obere Str. 57, Berlin, Germany</td>
-                                <td>(313) 555-5735</td>
+                            <tr th:each="etude : ${etudes}">
+                                <td th:text="${etude.libelle}"></td>
+                                <td th:text="${etude.dateDebut}"></td>
+                                <td th:text="${etude.dateFin}"></td>
+                                <td th:text="${etude.budget}"></td>
+                                <td th:text="${etude.satisfaction}"></td>
                                 <td>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
