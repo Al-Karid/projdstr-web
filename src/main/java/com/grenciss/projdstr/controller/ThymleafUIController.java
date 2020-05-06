@@ -102,6 +102,14 @@ public class ThymleafUIController {
         return "details-etude";
     }
 
+    @PostMapping("/update/etude/{id}")
+    public String updateEtude(@PathVariable(value = "id") Long id, @Valid Etude newEtude){
+        Etude etude = etudes.findById(id).orElseThrow(()-> new ResourceNotFoundException("Etude", "id", id));
+        etude.update(newEtude);
+        etudes.save(etude);
+        return "redirect:/details/etude/"+etude.getId();
+    }
+
     @GetMapping("/delete/etude/{id}")
     public String deleteEtude(@PathVariable("id") long id){
         Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));

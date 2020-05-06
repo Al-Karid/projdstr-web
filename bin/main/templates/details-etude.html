@@ -24,11 +24,10 @@
 				</a>
 				<form class="form-inline">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-outline-success" data-toggle="modal"
+					<button type="button" class="btn btn-outline-info" data-toggle="modal"
 						data-target="#addEtudeModal" style="margin-right: 5px;">
-						Nouvelle Etude
+						Modifier
 					</button>
-					<a href="#" class="btn btn-outline-info" role="button" style="margin-right:5px">Modifier</a>
 					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteEtudeModal">
 						Supprimer
 					</button>
@@ -84,6 +83,9 @@
 				<a class="navbar-brand" href="#">
 					Réalisateur du Projet
 				</a>
+				<form class="form-inline">
+					<a href="#" class="btn btn-outline-success" role="button" style="margin-right:5px">Ajouter le Rélisateur</a>
+				</form>
 			</nav>
 			<div class="container">
 				<table class="table table-bordered table-hover" style="margin-top:15px;">
@@ -118,6 +120,9 @@
 				<a class="navbar-brand" href="#">
 					Liste des Candidats de l'Appel d'Offre
 				</a>
+				<form class="form-inline">
+					<a href="#" class="btn btn-outline-success" role="button" style="margin-right:5px">Ajouter un Candidat</a>
+				</form>
 			</nav>
 			<div class="container">
 				<table class="table table-bordered table-hover" style="margin-top:15px;">
@@ -149,7 +154,7 @@
 	<div id="addEtudeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="#" method="POST" th:action="@{/save/etude}" th:object="${etude}">
+				<form action="#" method="POST" th:action="@{/update/etude/{id}(id=${etude.id})}" th:object="${etude}">
 					<div class="modal-header">
 						<h4 class="modal-title">Nouvelle Etude</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
