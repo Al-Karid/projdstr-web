@@ -101,4 +101,11 @@ public class ThymleafUIController {
         model.addAttribute("etude", etude);
         return "details-etude";
     }
+
+    @GetMapping("/delete/etude/{id}")
+    public String deleteEtude(@PathVariable("id") long id){
+        Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));
+        etudes.delete(etude);
+        return "redirect:/liste/etudes";
+    }
 }
