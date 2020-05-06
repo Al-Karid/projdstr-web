@@ -54,18 +54,78 @@
     <!-- Action list -->
     <div class="card text-white bg-light mb-3">
         <div class="card-body">
-            <div class="card-title" style="color: black; text-decoration: underline;"><h3>Prestataires</h3></div>
+            <div class="card-title" style="color: black; text-decoration: underline;">
+                <h3>Prestataires</h3>
+            </div>
             <a th:href="@{/liste/prestataires}" class="btn btn-primary" role="button">Liste</a>
-            <a href="#" class="btn btn-primary" role="button">Nouveau</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPrestataireModal">
+                Nouveau
+            </button>
         </div>
     </div>
     <div class="card text-white bg-light mb-3">
         <div class="card-body">
-            <div class="card-title" style="color: black; text-decoration: underline;"><h3>Etudes</h3></div>
+            <div class="card-title" style="color: black; text-decoration: underline;">
+                <h3>Etudes</h3>
+            </div>
             <a th:href="@{/liste/etudes}" class="btn btn-primary" role="button">Liste</a>
             <a href="#" class="btn btn-primary" role="button">Nouveau</a>
         </div>
     </div>
+
+    <!-- Edit Modal HTML -->
+    <div id="addPrestataireModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="#" method="POST" th:action="@{/save/prestataire}" th:object="${prestataire}">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Nouveau Prestataire</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Libelle</label>
+                            <input type="text" class="form-control" id="libelle" th:field="*{libelle}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Siege</label>
+                            <input type="text" class="form-control" id="siege" th:field="*{siege}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nom contact 1</label>
+                            <input type="text" class="form-control" id="persAContacter1" th:field="*{persAContacter1}"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact 1</label>
+                            <input type="text" class="form-control" id="contact1" th:field="*{contact1}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nom comtact 2</label>
+                            <input type="text" class="form-control" id="persAContacter2" th:field="*{persAContacter2}">
+                        </div>
+                        <div class="form-group">
+                            <label>Contact 2</label>
+                            <input type="text" class="form-control" id="contact2" th:field="*{contact2}">
+                        </div>
+                        <div class="form-group">
+                            <label>Commentaire</label>
+                            <textarea class="form-control" id="commentaire" th:field="*{commentaire}"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+                        <input type="submit" class="btn btn-success" value="Valider">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal HTML -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

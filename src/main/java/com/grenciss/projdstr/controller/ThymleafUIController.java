@@ -30,7 +30,7 @@ public class ThymleafUIController {
     EtudeRepository etudes;
 
     @GetMapping("/")
-    public String index(){
+    public String index(Prestataire prestataire){
         return "index";
     }
 
@@ -42,11 +42,11 @@ public class ThymleafUIController {
     @PostMapping("/save/prestataire")
     public String savePrestataire(@Valid Prestataire prestataire, BindingResult result, Model model){
         prestataires.save(prestataire);
-        return "redirect:/";
+        return "redirect:/liste/prestataires";
     }
 
     @GetMapping("/liste/prestataires")
-    public String listPrestataire(Model model){
+    public String listPrestataire(Model model, Prestataire prestataire){
         List<Prestataire> listPrestataire = prestataires.findAll();
         model.addAttribute("prestataires", listPrestataire);
         return "liste-prestataire";
