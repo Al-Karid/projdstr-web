@@ -1,10 +1,14 @@
 package com.grenciss.projdstr.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
+import com.grenciss.projdstr.model.Etude;
 import com.grenciss.projdstr.model.Prestataire;
+import com.grenciss.projdstr.repository.EtudeRepository;
 import com.grenciss.projdstr.repository.PrestataireRepository;
 import com.grenciss.projdstr.exception.ResourceNotFoundException;
 
@@ -26,6 +30,9 @@ public class PrestataireController {
     @Autowired
     PrestataireRepository prestataires;
 
+    @Autowired
+    EtudeRepository etudes;
+
     @GetMapping("/all")
     public List<Prestataire> getAllPrestataires(){
         return prestataires.findAll();
@@ -34,6 +41,25 @@ public class PrestataireController {
     @GetMapping("/get/{id}")
     public Prestataire getOneById(@PathVariable("id") long id) {
         return prestataires.findById(id).orElseThrow(()-> new ResourceNotFoundException("Prestataire", "id", id));
+    }
+
+    @GetMapping("/get/{id}/etudes")
+    public List<Etude> getPrestatairesEtudes(@PathVariable("id") long id){
+        List<Etude> allEtudes = etudes.findAll();
+        List<Long> etudesId = new ArrayList<>();
+        for (Etude etude : allEtudes) {
+            Set<Prestataire> allPrestataires = etude.getPrestataires();
+            for (Prestataire p : allPrestataires) {
+                if (p.getId()==id) {
+                    etudesId.add(etude.getId());
+                }
+            }
+        }
+        List<Etude> allPrestataireEtudes = new ArrayList<>();
+        for (Long eid : etudesId) {
+            allPrestataireEtudes.add(etudes.findById(eid).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", eid)));
+        }
+        return allPrestataireEtudes;
     }
 
     @PostMapping("/save")
