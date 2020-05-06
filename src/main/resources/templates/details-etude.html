@@ -80,7 +80,7 @@
 			<!-- Navbar -->
 			<nav class="navbar navbar-dark bg-primary">
 				<a class="navbar-brand" href="#">
-					Réalisateur du Projet 
+					Réalisateur du Projet
 				</a>
 			</nav>
 			<div class="container">
@@ -114,7 +114,7 @@
 			<!-- Navbar -->
 			<nav class="navbar navbar-dark bg-primary">
 				<a class="navbar-brand" href="#">
-					Liste des Candidats de l'Appel d'Offre 
+					Liste des Candidats de l'Appel d'Offre
 				</a>
 			</nav>
 			<div class="container">
@@ -143,49 +143,56 @@
 		</div>
 	</div>
 
-		<!-- Edit Modal HTML -->
-		<div id="addEtudeModal" class="modal fade">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<form>
-						<div class="modal-header">
-							<h4 class="modal-title">Nouvelle Etude</h4>
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<!-- Edit Modal HTML -->
+	<div id="addEtudeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="#" method="POST" th:action="@{/save/etude}" th:object="${etude}">
+					<div class="modal-header">
+						<h4 class="modal-title">Nouvelle Etude</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Libelle</label>
+							<input type="text" id="libelle" class="form-control" th:field="*{libelle}" required>
 						</div>
-						<div class="modal-body">
-							<div class="form-group">
-								<label>Libelle</label>
-								<input type="text" class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label>Date de Debut</label>
-								<input type="date" class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label>Date de Fin</label>
-								<input type="date" class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label>Budget</label>
-								<input type="number" class="form-control" required>
-							</div>
-							<div class="form-group">
-								<label>Type de l'étude</label>
-							</div>
-							<div class="form-group">
-								<label>Commentaire</label>
-								<textarea class="form-control"></textarea>
-							</div>
+						<div class="form-group">
+							<label>Date de Debut</label>
+							<input th:field="*{dateDebut}" type="text" id="dateDebut" class="form-control"
+								placeholder="yyyy/mm/dd" required>
 						</div>
-						<div class="modal-footer">
-							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-							<input type="submit" class="btn btn-success" value="Add">
+						<div class="form-group">
+							<label>Date de Fin</label>
+							<input type="text" id="dateFin" class="form-control" th:field="*{dateFin}"
+								placeholder="yyyy-mm-dd">
 						</div>
-					</form>
-				</div>
+						<div class="form-group">
+							<label>Budget</label>
+							<input type="number" id="budget" class="form-control" th:field="*{budget}" required>
+						</div>
+						<div class="form-group">
+							<label>Type de l'étude</label>
+							<select class="form-control" id="typeEtude" th:field="*{typeEtude}" required>
+								<option th:value="quantitatif">Quantitatif</option>
+								<option th:value="qualitatif">Qualitatif</option>
+								<option th:value="mix">Mix(Qualitatif & Quantitatif Potentiel)</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>Commentaire</label>
+							<textarea class="form-control" id="commentaire" th:field="*{commentaire}"></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-success" value="Valider">
+					</div>
+				</form>
 			</div>
 		</div>
-		<!-- Edit Modal HTML -->
+	</div>
+	<!-- Edit Modal HTML -->
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

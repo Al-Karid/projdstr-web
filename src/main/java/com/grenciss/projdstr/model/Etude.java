@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "etudes")
 public class Etude implements Serializable, Base {
@@ -37,8 +39,10 @@ public class Etude implements Serializable, Base {
 
     @NotNull
     @Column(nullable = false)
+    @DateTimeFormat(pattern="yyyy/mm/dd")
     private Date dateDebut;
-
+    
+    @DateTimeFormat(pattern="yyyy/mm/dd")
     private Date dateFin;
 
     private Date dateAffectation;

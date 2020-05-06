@@ -79,8 +79,17 @@ public class ThymleafUIController {
         return "details-prestataire";
     }
 
+    // ETUDE
+
+    @PostMapping("/save/etude")
+    public String saveEtude(@Valid Etude etude, BindingResult result, Model model){
+        System.err.println(etude);
+        Etude e = etudes.save(etude);
+        return "redirect:/details/etude/"+e.getId();
+    }
+
     @GetMapping("/liste/etudes")
-    public String listeEtude(Model model){
+    public String listeEtude(Model model, Etude etude){
         List<Etude> allEtudes = etudes.findAll();
         model.addAttribute("etudes", allEtudes);
         return "liste-etude";
