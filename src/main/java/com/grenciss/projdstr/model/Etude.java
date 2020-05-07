@@ -51,6 +51,8 @@ public class Etude implements Serializable, Base {
     @Column(nullable = false)
     private int budget;
 
+    private long realisateur;
+
     private String status;
 
     private String satisfaction;
@@ -195,6 +197,14 @@ public class Etude implements Serializable, Base {
 
     public void setPrestataires(Set<Prestataire> prestataires) {
         this.prestataires = prestataires;
+    }
+
+    public long getRealisateur() {
+        return realisateur;
+    }
+
+    public void setRealisateur(long realisateur) {
+        this.realisateur = realisateur;
     }
 
     

@@ -104,12 +104,23 @@ public class ThymleafUIController {
         return "redirect:/details/etude/"+e.getId();
     }
 
-    @PostMapping("/save/etude/prestataire/{id}")
-    public String saveEtudePrestataire(@PathVariable("id") long id, @RequestParam(value = "candidat") String c){
+    @PostMapping("/save/etude/candidats/{id}")
+    public String saveEtudeCandidats(@PathVariable("id") long id, @RequestParam(value = "candidat") String c){
         Long candidat = Long.valueOf(c);
         Prestataire prestataire = prestataires.findById(candidat).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", candidat));
         Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));
         etude.getPrestataires().add(prestataire);
+        etudes.save(etude);
+        return "redirect:/details/etude/"+etude.getId();
+    }
+
+    @PostMapping("/save/etude/realisateur/{id}")
+    public String saveEtudeRealisateur(@PathVariable("id") long id, @RequestParam(value = "realisateur") String r){
+        Long realisateur = Long.valueOf(r);
+        Prestataire prestataire = prestataires.findById(realisateur).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", realisateur));
+        Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));
+        etude.getPrestataires().add(prestataire);
+        etude.setRealisateur(realisateur);
         etudes.save(etude);
         return "redirect:/details/etude/"+etude.getId();
     }
@@ -125,8 +136,18 @@ public class ThymleafUIController {
     public String detailsEtude(@PathVariable("id") long id, Model model){
         List<Prestataire> allPrestataires = prestataires.findAll();
         Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));
+        Prestataire r;
         model.addAttribute("etude", etude);
         model.addAttribute("prestataires", allPrestataires);
+        // Send realisateur if available
+        if(etude.getRealisateur()!=0){
+            long p = etude.getRealisateur();
+            r = prestataires.findById(p).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", p));
+            model.addAttribute("realisateur", r);
+        }else{
+            r = new Prestataire();
+            model.addAttribute("realisateur", r);
+        }
         return "details-etude";
     }
 
