@@ -30,7 +30,7 @@ public class ThymleafUIController {
     EtudeRepository etudes;
 
     @GetMapping("/")
-    public String index(Prestataire prestataire){
+    public String index(Prestataire prestataire, Etude etude){
         return "index";
     }
 
