@@ -85,8 +85,10 @@
 					Réalisateur du Projet
 				</a>
 				<form class="form-inline">
-					<a href="#" class="btn btn-outline-success" role="button" style="margin-right:5px">Ajouter le
-						Rélisateur</a>
+					<button type="button" class="btn btn-outline-success" data-toggle="modal"
+						data-target="#addRealisateurModal">
+						Ajouter le Realiateur
+					</button>
 				</form>
 			</nav>
 			<div class="container">
@@ -102,7 +104,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr th:if="${etude.realisateur!=0}">
 							<td th:text="${realisateur.libelle}"></td>
 							<td th:text="${realisateur.email}"></td>
 							<td th:text="${realisateur.siege}"></td>
@@ -205,6 +207,33 @@
 		</div>
 	</div>
 	<!-- Edit Add Etudes Modal HTML -->
+
+	<!-- Edit Add Realisateur Modal -->
+	<div id="addRealisateurModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="#" method="POST" th:action="@{/save/etude/realisateur/{id}(id=${etude.id})}">
+					<div class="modal-header">
+						<h4 class="modal-title">Ajouter le realisateur</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Selectionner un Prestataires</label>
+							<select class="form-control" id="candidat" name="realisateur" required>
+								<option th:each="p : ${prestataires}" th:value="${p.id}" th:text="${p.libelle}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-success" value="Valider">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Edit Add Realisateur Modal -->
 
 	<!-- Edit Add Candidat Modal -->
 	<div id="addCandidatModal" class="modal fade">
