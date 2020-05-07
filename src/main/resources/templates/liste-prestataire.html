@@ -15,7 +15,7 @@
 
 <body>
 
-	<div class="container-fluid" style="margin-top: 15px">
+	<div class="container" style="margin-top: 15px">
 		<div class="card">
 			<!-- Navbar -->
 			<nav class="navbar navbar-dark bg-primary">
@@ -38,10 +38,10 @@
 							<th>Libelle</th>
 							<th>Email</th>
 							<th>Siege</th>
-							<th>Personne 1</th>
-							<th>Contact 1</th>
-							<th>Personne 2</th>
-							<th>Contact 2</th>
+							<th>Contact</th>
+							<th>Cellulaire</th>
+							<!-- <th>Personne 2</th> -->
+							<!-- <th>Contact 2</th> -->
 							<!-- <th>Commentaire</th> -->
 							<th>Details</th>
 						</tr>
@@ -53,8 +53,8 @@
 							<td th:text="${p.siege}"></td>
 							<td th:text="${p.persAContacter1}"></td>
 							<td th:text="${p.contact1}"></td>
-							<td th:text="${p.persAContacter2}"></td>
-							<td th:text="${p.contact2}"></td>
+							<!-- <td th:text="${p.persAContacter2}"></td> -->
+							<!-- <td th:text="${p.contact2}"></td> -->
 							<!-- <td th:text="${p.commentaire}"></td> -->
 							<td>
 								<a th:href="@{/details/prestataire/{id}(id=${p.id})}">details</a>
