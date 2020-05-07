@@ -23,8 +23,12 @@
 					Details du Prestataires
 				</a>
 				<form class="form-inline my-2 my-lg-0">
-					<a href="#" class="btn btn-info" role="button" style="margin-right:5px">Modifier</a>
-					<a href="#" class="btn btn-outline-danger" role="button">Supprimer</a>
+					<button type="button" style="margin-right:5px" class="btn btn-outline-info" data-toggle="modal" data-target="#addPrestataireModal">
+						Modifier
+					</button>
+					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deletePrestataireModal">
+						Supprimer
+					</button>
 				</form>
 			</nav>
 			<!-- Liste des etudes -->
@@ -107,6 +111,85 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+		</div>
+	</div>
+
+	    <!-- Edit Modal HTML -->
+		<div id="addPrestataireModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="#" method="POST" th:action="@{/update/prestataire/{id}(id=${p.id})}" th:object="${p}">
+						<div class="modal-header">
+							<h4 class="modal-title">Modifier Prestataire</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label>Libelle</label>
+								<input type="text" class="form-control" id="libelle" th:field="*{libelle}" required>
+							</div>
+							<div class="form-group">
+								<label>Email</label>
+								<input type="email" class="form-control" id="email" th:field="*{email}" required>
+							</div>
+							<div class="form-group">
+								<label>Siege</label>
+								<input type="text" class="form-control" id="siege" th:field="*{siege}" required>
+							</div>
+							<div class="form-group">
+								<label>Nom contact 1</label>
+								<input type="text" class="form-control" id="persAContacter1" th:field="*{persAContacter1}"
+									required>
+							</div>
+							<div class="form-group">
+								<label>Contact 1</label>
+								<input type="text" class="form-control" id="contact1" th:field="*{contact1}" required>
+							</div>
+							<div class="form-group">
+								<label>Nom comtact 2</label>
+								<input type="text" class="form-control" id="persAContacter2" th:field="*{persAContacter2}">
+							</div>
+							<div class="form-group">
+								<label>Contact 2</label>
+								<input type="text" class="form-control" id="contact2" th:field="*{contact2}">
+							</div>
+							<div class="form-group">
+								<label>Commentaire</label>
+								<textarea class="form-control" id="commentaire" th:field="*{commentaire}"></textarea>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+							<input type="submit" class="btn btn-success" value="Valider">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Edit Modal HTML -->
+
+		<!-- Modal delete Prestataires -->
+		<div class="modal fade" id="deletePrestataireModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Suppression</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" role="alert" style="margin-bottom:0px">
+						Êtes-vous sûr de vouloir supprimer ce prestataire?
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+					<a th:href="@{/delete/prestataire/{id}(id=${p.id})}" class="btn btn-danger"
+						role="button">Supprimer</a>
+				</div>
 			</div>
 		</div>
 	</div>

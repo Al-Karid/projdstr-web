@@ -79,6 +79,21 @@ public class ThymleafUIController {
         return "details-prestataire";
     }
 
+    @PostMapping("/update/prestataire/{id}")
+    public String updatePrestataire(@PathVariable("id") long id, @Valid Prestataire p){
+        Prestataire prestataire = prestataires.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", id));
+        prestataire.update(p);
+        prestataires.save(prestataire);
+        return "redirect:/details/prestataire/"+prestataire.getId();
+    }
+
+    @GetMapping("/delete/prestataire/{id}")
+    public String deletePrestataire(@PathVariable("id") long id){
+        Prestataire prestataire = prestataires.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", id));
+        prestataires.delete(prestataire);
+        return "redirect:/liste/prestataires";
+    }
+
     // ETUDE
 
     @PostMapping("/save/etude")
