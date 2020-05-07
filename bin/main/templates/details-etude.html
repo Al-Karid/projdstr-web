@@ -39,7 +39,7 @@
 				<table class="table table-bordered" style="margin-top: 15px;">
 					<tbody>
 						<tr>
-							<td>Libelle</td>
+							<td>Étude</td>
 							<td th:text="${etude.libelle}"></td>
 						</tr>
 						<tr>
@@ -59,11 +59,11 @@
 							<td th:text="${etude.satisfaction}"></td>
 						</tr>
 						<tr>
-							<td>Periodicite</td>
+							<td>Périodicite</td>
 							<td th:text="${etude.periodicite}"></td>
 						</tr>
 						<tr>
-							<td>Tyde de l'étude</td>
+							<td>Type de l'étude</td>
 							<td th:text="${etude.typeEtude}"></td>
 						</tr>
 						<tr>
@@ -80,14 +80,15 @@
 	<div class="container" style="margin-top: 20px">
 		<div class="card">
 			<!-- Navbar -->
-			<form action="#" method="POST" th:action="@{/update/caracteristiques/etude/{id}(id=${etude.id})}" th:object="${etude}">
-			<nav class="navbar navbar-dark bg-primary">
-				<a class="navbar-brand" href="#">
-					Caractéristiques du Projet
-				</a>
-				<input type="submit" class="btn btn-success" value="Valider">
-			</nav>
-			<div class="container">
+			<form action="#" method="POST" th:action="@{/update/caracteristiques/etude/{id}(id=${etude.id})}"
+				th:object="${etude}">
+				<nav class="navbar navbar-dark bg-primary">
+					<a class="navbar-brand" href="#">
+						Caractéristiques du Projet
+					</a>
+					<input type="submit" class="btn btn-success" value="Valider">
+				</nav>
+				<div class="container">
 					<div class="modal-header">
 						<!-- <h4 class="modal-title">Nouvelle Etude</h4> -->
 						<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
@@ -104,7 +105,7 @@
 								<option value="5">5</option>
 							</select>
 							<label>Qualité livrables</label>
-							<select class="form-control mx-auto" name="qualite"  required>
+							<select class="form-control mx-auto" name="qualite" required>
 								<option th:value="${qlt}" th:text="${qlt}"></option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -127,9 +128,9 @@
 						<!-- <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler"> -->
 						<!-- <input type="submit" class="btn btn-success" value="Valider"> -->
 					</div>
-				</form>
-			</div>
+			</form>
 		</div>
+	</div>
 	</div>
 
 	<!-- Realiateur du Projet -->
@@ -219,16 +220,16 @@
 			<div class="modal-content">
 				<form action="#" method="POST" th:action="@{/update/etude/{id}(id=${etude.id})}" th:object="${etude}">
 					<div class="modal-header">
-						<h4 class="modal-title">Nouvelle Etude</h4>
+						<h4 class="modal-title">Nouvelle Étude</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Libelle</label>
-							<input type="text" id="libelle" class="form-control" th:field="*{libelle}" required>
+							<label>Étude</label>
+							<input type="text" id="libelle" class="form-control" th:field="*{libelle}">
 						</div>
 						<div class="form-group">
-							<label>Date de Debut</label>
+							<label>Début</label>
 							<input th:field="*{dateDebut}" type="text" id="dateDebut" class="form-control"
 								placeholder="yyyy/mm/dd" required>
 						</div>
@@ -242,22 +243,33 @@
 							<input type="number" id="budget" class="form-control" th:field="*{budget}" required>
 						</div>
 						<div class="form-group">
-							<label>Type de l'étude</label>
-							<select class="form-control" id="typeEtude" th:field="*{typeEtude}" required>
-								<option th:value="quantitatif">Quantitatif</option>
-								<option th:value="qualitatif">Qualitatif</option>
-								<option th:value="mix">Mix(Qualitatif & Quantitatif Potentiel)</option>
+							<label>Périodicité</label>
+							<select class="form-control" id="periodicite" th:field="*{periodicite}" required>
+								<option th:value="${periodicite}" th:text="${periodicite}"></option>
+								<option value="adhoc">adhoc</option>
+								<option value="hebdomadaire">hebdomadaire</option>
+								<option value="mensuelle">mensuelle</option>
+								<option value="trimestrielle">trimestrielle</option>
+								<option value="quatrimestrielle">quatrimestrielle</option>
+								<option value="annuelle">quatrimestrielle</option>
 							</select>
+							<div class="form-group">
+								<label>Type de l'étude</label>
+								<select class="form-control" id="typeEtude" th:field="*{typeEtude}" required>
+									<option th:value="quantitatif">Quantitatif</option>
+									<option th:value="qualitatif">Qualitatif</option>
+									<option th:value="mix">Mix(Qualitatif & Quantitatif Potentiel)</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Commentaire</label>
+								<textarea class="form-control" id="commentaire" th:field="*{commentaire}"></textarea>
+							</div>
 						</div>
-						<div class="form-group">
-							<label>Commentaire</label>
-							<textarea class="form-control" id="commentaire" th:field="*{commentaire}"></textarea>
+						<div class="modal-footer">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+							<input type="submit" class="btn btn-success" value="Valider">
 						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-						<input type="submit" class="btn btn-success" value="Valider">
-					</div>
 				</form>
 			</div>
 		</div>
@@ -277,7 +289,8 @@
 						<div class="form-group">
 							<label>Selectionner un Prestataires</label>
 							<select class="form-control" id="candidat" name="realisateur" required>
-								<option th:each="p : ${prestataires}" th:value="${p.id}" th:text="${p.libelle}"></option>
+								<option th:each="p : ${prestataires}" th:value="${p.id}" th:text="${p.libelle}">
+								</option>
 							</select>
 						</div>
 					</div>
@@ -304,7 +317,8 @@
 						<div class="form-group">
 							<label>Selectionner un Candidat</label>
 							<select class="form-control" id="candidat" name="candidat" required>
-								<option th:each="p : ${prestataires}" th:value="${p.id}" th:text="${p.libelle}"></option>
+								<option th:each="p : ${prestataires}" th:value="${p.id}" th:text="${p.libelle}">
+								</option>
 							</select>
 						</div>
 					</div>
