@@ -37,8 +37,6 @@ public class Etude implements Serializable, Base {
     @Column(nullable = false)
     private String libelle;
 
-    @NotNull
-    @Column(nullable = false)
     @DateTimeFormat(pattern="yyyy/mm/dd")
     private Date dateDebut;
     

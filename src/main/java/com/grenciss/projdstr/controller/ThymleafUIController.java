@@ -148,6 +148,17 @@ public class ThymleafUIController {
             r = new Prestataire();
             model.addAttribute("realisateur", r);
         }
+        if (etude.getNiveauSatisfaction()==null) {
+            model.addAttribute("dsp",0);
+            model.addAttribute("qlt",0);
+            model.addAttribute("dls",0);
+            
+        } 
+        else {
+            model.addAttribute("dsp",etude.getNiveauSatisfaction().split(",")[0]);
+            model.addAttribute("qlt",etude.getNiveauSatisfaction().split(",")[1]);
+            model.addAttribute("dls",etude.getNiveauSatisfaction().split(",")[2]);
+        }
         return "details-etude";
     }
 

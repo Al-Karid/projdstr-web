@@ -43,11 +43,11 @@
 							<td th:text="${etude.libelle}"></td>
 						</tr>
 						<tr>
-							<td>Date de Debut</td>
+							<td>Début</td>
 							<td th:text="${etude.dateDebut}"></td>
 						</tr>
 						<tr>
-							<td>Date de Fin</td>
+							<td>Fin</td>
 							<td th:text="${etude.dateFin}"></td>
 						</tr>
 						<tr>
@@ -94,27 +94,27 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-inline">
-							<!-- <label>Disponibilite</label> -->
+							<label>Disponibilité</label>
 							<select class="form-control mx-auto" name="disponibilite" required>
-								<option value="0">Disponibilité</option>
+								<option th:value="${dsp}" th:text="${dsp}"></option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
 								<option value="5">5</option>
 							</select>
-							<!-- <label>Qualite livrables</label> -->
+							<label>Qualité livrables</label>
 							<select class="form-control mx-auto" name="qualite"  required>
-								<option value="0">Qualité livrables</option>
+								<option th:value="${qlt}" th:text="${qlt}"></option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
 								<option value="4">4</option>
 								<option value="5">5</option>
 							</select>
-							<!-- <label>Respect delais</label> -->
+							<label>Respect délais</label>
 							<select class="form-control mx-auto" name="delais" required>
-								<option value="0">Respect délais</option>
+								<option th:value="${dls}" th:text="${dls}"></option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="3">3</option>
