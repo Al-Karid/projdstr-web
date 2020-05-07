@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ThymleafUIController {
@@ -103,6 +104,16 @@ public class ThymleafUIController {
         return "redirect:/details/etude/"+e.getId();
     }
 
+    @PostMapping("/save/etude/prestataire/{id}")
+    public String saveEtudePrestataire(@PathVariable("id") long id, @RequestParam(value = "candidat") String c){
+        Long candidat = Long.valueOf(c);
+        Prestataire prestataire = prestataires.findById(candidat).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", candidat));
+        Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));
+        etude.getPrestataires().add(prestataire);
+        etudes.save(etude);
+        return "redirect:/details/etude/"+etude.getId();
+    }
+
     @GetMapping("/liste/etudes")
     public String listeEtude(Model model, Etude etude){
         List<Etude> allEtudes = etudes.findAll();
@@ -112,8 +123,10 @@ public class ThymleafUIController {
 
     @GetMapping("/details/etude/{id}")
     public String detailsEtude(@PathVariable("id") long id, Model model){
+        List<Prestataire> allPrestataires = prestataires.findAll();
         Etude etude = etudes.findById(id).orElseThrow(() -> new ResourceNotFoundException("Etude", "id", id));
         model.addAttribute("etude", etude);
+        model.addAttribute("prestataires", allPrestataires);
         return "details-etude";
     }
 

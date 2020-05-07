@@ -24,11 +24,12 @@
 				</a>
 				<form class="form-inline">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-outline-info" data-toggle="modal"
-						data-target="#addEtudeModal" style="margin-right: 5px;">
+					<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#addEtudeModal"
+						style="margin-right: 5px;">
 						Modifier
 					</button>
-					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteEtudeModal">
+					<button type="button" class="btn btn-outline-danger" data-toggle="modal"
+						data-target="#deleteEtudeModal">
 						Supprimer
 					</button>
 				</form>
@@ -84,7 +85,8 @@
 					Réalisateur du Projet
 				</a>
 				<form class="form-inline">
-					<a href="#" class="btn btn-outline-success" role="button" style="margin-right:5px">Ajouter le Rélisateur</a>
+					<a href="#" class="btn btn-outline-success" role="button" style="margin-right:5px">Ajouter le
+						Rélisateur</a>
 				</form>
 			</nav>
 			<div class="container">
@@ -121,7 +123,10 @@
 					Liste des Candidats de l'Appel d'Offre
 				</a>
 				<form class="form-inline">
-					<a href="#" class="btn btn-outline-success" role="button" style="margin-right:5px">Ajouter un Candidat</a>
+					<button type="button" class="btn btn-outline-success" data-toggle="modal"
+						data-target="#addCandidatModal">
+						Ajouter un Candidat
+					</button>
 				</form>
 			</nav>
 			<div class="container">
@@ -150,7 +155,7 @@
 		</div>
 	</div>
 
-	<!-- Edit Modal HTML -->
+	<!-- Edit Add Etudes Modal HTML -->
 	<div id="addEtudeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -199,12 +204,36 @@
 			</div>
 		</div>
 	</div>
-	<!-- Edit Modal HTML -->
+	<!-- Edit Add Etudes Modal HTML -->
 
-	<!-- Delete etude modal -->
-	<!-- Button trigger modal -->
+	<!-- Edit Add Candidat Modal -->
+	<div id="addCandidatModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="#" method="POST" th:action="@{/save/etude/prestataire/{id}(id=${etude.id})}">
+					<div class="modal-header">
+						<h4 class="modal-title">Ajouter des Candidats</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Selectionner un Candidat</label>
+							<select class="form-control" id="candidat" name="candidat" required>
+								<option th:each="p : ${prestataires}" th:value="${p.id}" th:text="${p.libelle}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
+						<input type="submit" class="btn btn-success" value="Valider">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Edit Add Candidat Modal -->
 
-	<!-- Modal -->
+	<!-- Edit Delete Etude Modal -->
 	<div class="modal fade" id="deleteEtudeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 		aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -228,7 +257,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Delete etude modal -->
+	<!-- Edit Delete Etude Modal -->
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
