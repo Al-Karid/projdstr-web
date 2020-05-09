@@ -15,6 +15,10 @@
 
 <body>
 
+	<!-- Add header -->
+	<div th:insert="fragments/header :: header"></div>
+	<!-- Add header -->
+
 	<div class="container" style="margin-top: 15px">
 		<div class="card">
 			<!-- Navbar -->
@@ -30,16 +34,17 @@
 					</button>
 				</form>
 			</nav>
-			<!-- Liste des etudes -->
-			<div class="container-fluid">
+			<!-- Liste des Prestataires -->
+			<div class="container" style="max-height: 785px; overflow: hidden; overflow-y: auto">
 				<table class="table table-hover" style="margin-bottom:0px">
 					<thead>
 						<tr>
+							<th>#</th>
 							<th>Prestataire</th>
 							<th>Email</th>
 							<th>Siège</th>
-							<th>Contact</th>
-							<th>Cellulaire</th>
+							<th>Personne a contacter</th>
+							<th>Telephone</th>
 							<!-- <th>Personne 2</th> -->
 							<!-- <th>Contact 2</th> -->
 							<!-- <th>Commentaire</th> -->
@@ -47,10 +52,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="p : ${prestataires}">
-							<td th:text="${p.libelle}"></td>
+						<tr th:each="p, i : ${prestataires}">
+							<td th:text="${i.index}"></td>
+							<td th:text="${p.libelle}" class="text-truncate"></td>
 							<td th:text="${p.email}"></td>
-							<td th:text="${p.siege}"></td>
+							<td style="display: block;" th:text="${p.siege}"></td>
 							<td th:text="${p.persAContacter1}"></td>
 							<td th:text="${p.contact1}"></td>
 							<!-- <td th:text="${p.persAContacter2}"></td> -->

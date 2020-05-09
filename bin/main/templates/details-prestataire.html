@@ -15,6 +15,10 @@
 
 <body>
 
+	<!-- Add header -->
+	<div th:insert="fragments/header :: header"></div>
+	<!-- Add header -->
+
 	<div class="container" style="margin-top: 20px">
 		<div class="card">
 			<!-- Navbar -->
@@ -95,8 +99,8 @@
 							<th>Debut</th>
 							<th>Fin</th>
 							<th>Budget</th>
-							<th  style="text-align: center;">Satisfaction</th>
-							<th  style="text-align: center;">Details</th>
+							<th style="text-align: center;">Satisfaction</th>
+							<th style="text-align: center;">Details</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -105,8 +109,8 @@
 							<td th:text="${etude.dateDebut}"></td>
 							<td th:text="${etude.dateFin}"></td>
 							<td th:text="${etude.budget}"></td>
-							<td th:text="${etude.satisfaction}"  style="text-align: center;"></td>
-							<td  style="text-align: center;">
+							<td th:text="${etude.satisfaction}" style="text-align: center;"></td>
+							<td style="text-align: center;">
 								<a th:href="@{/details/etude/{id}(id=${etude.id})}">details</a>
 							</td>
 						</tr>

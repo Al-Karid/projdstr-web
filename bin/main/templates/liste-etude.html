@@ -15,7 +15,11 @@
 
 <body>
 
-    <div class="container" style="margin-top: 20px">
+    <!-- Add header -->
+    <div th:insert="fragments/header :: header"></div>
+    <!-- Add header -->
+
+    <div class="container" style="margin-top: 15px; margin-bottom: 15px">
         <div class="card">
             <!-- Navbar -->
             <nav class="navbar navbar-dark bg-primary">
@@ -31,13 +35,14 @@
                 </form>
             </nav>
             <!-- Liste des etudes -->
-            <div class="container">
+            <div class="container" style="max-height: 785px; overflow: hidden; overflow-y: auto">
                 <table class="table table-hover" style="margin-bottom: 0px; text-align: center;">
                     <thead>
                         <tr>
+                            <th scope="col">#</th>
                             <th style="text-align: left;" scope="col">Etude</th>
                             <th scope="col">Debut</th>
-                            <th scope="col">Fin</th>
+                            <!-- <th scope="col">Fin</th> -->
                             <th scope="col">Budget</th>
                             <th scope="col">Type etude</th>
                             <th scope="col">Periodicite</th>
@@ -46,13 +51,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="etude : ${etudes}">
+                        <tr th:each="etude, i : ${etudes}">
+                            <td th:text="${i.index+1}"></td>
                             <td style="text-align: left;" th:text="${etude.libelle}"></td>
-                            <td th:text="${etude.dateDebut}"></td>
-                            <td th:text="${etude.dateFin}"></td>
+                            <td th:text="${#dates.format(etude.dateDebut,'yyyy-mm-dd')}"></td>
+                            <!-- <td th:text="${#dates.format(etude.dateFin,'yyyy-mm-dd')}"></td> -->
                             <td th:text="${etude.budget}"></td>
-                            <td th:text="${etude.typeEtude}"></td>
-                            <td th:text="${etude.periodicite}"></td>
+                            <td style="text-transform: capitalize;" th:text="${etude.typeEtude}"></td>
+                            <td style="text-transform: capitalize;" th:text="${etude.periodicite}"></td>
                             <td style="text-align: center;" th:text="${etude.satisfaction}"></td>
                             <td style="text-align: center;"><a href="#" th:href="@{/details/etude/{id}(id=${etude.id})}">details</a></td>
                         </tr>
