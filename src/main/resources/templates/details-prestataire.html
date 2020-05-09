@@ -79,6 +79,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Liste des etudes realisee -->
 	<div class="container" style="margin-top: 20px">
 		<div class="card">
 			<!-- Navbar -->
@@ -95,6 +97,7 @@
 				<table class="table table-bordered table-hover" style="margin-top:15px;">
 					<thead>
 						<tr>
+							<th>#</th>
 							<th>Etude</th>
 							<th>Debut</th>
 							<th>Fin</th>
@@ -104,7 +107,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="etude : ${etudes}">
+						<tr th:each="etude, i : ${realisations}">
+							<td th:text="${i.index+1}"></td>
 							<td th:text="${etude.libelle}"></td>
 							<td th:text="${#dates.format(etude.dateDebut,'yyyy-mm-dd')}"></td>
 							<td th:text="${#dates.format(etude.dateFin,'yyyy-mm-m-dd')}"></td>
@@ -117,8 +121,56 @@
 					</tbody>
 				</table>
 			</div>
+			<!-- Liste des etudes -->
 		</div>
 	</div>
+	<!-- Liste des etudes realisee -->
+
+	<!-- Liste des appel d'offre -->
+	<div class="container" style="margin-top: 20px">
+		<div class="card">
+			<!-- Navbar -->
+			<nav class="navbar navbar-dark bg-primary">
+				<a class="navbar-brand" href="#">
+					Liste des Appels d'Offre
+				</a>
+				<!-- <form class="form-inline">
+					<button class="btn btn-outline-success my-2 my-sm-0">Nouvelle Etude</button>
+				</form> -->
+			</nav>
+			<!-- Liste des etudes -->
+			<div class="container">
+				<table class="table table-bordered table-hover" style="margin-top:15px;">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Etude</th>
+							<th>Debut</th>
+							<th>Fin</th>
+							<th>Budget</th>
+							<th style="text-align: center;">Satisfaction</th>
+							<th style="text-align: center;">Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="etude, i : ${etudes}">
+							<td th:text="${i.index+1}"></td>
+							<td th:text="${etude.libelle}"></td>
+							<td th:text="${#dates.format(etude.dateDebut,'yyyy-mm-dd')}"></td>
+							<td th:text="${#dates.format(etude.dateFin,'yyyy-mm-m-dd')}"></td>
+							<td th:text="${etude.budget}"></td>
+							<td th:text="${etude.satisfaction}" style="text-align: center;"></td>
+							<td style="text-align: center;">
+								<a th:href="@{/details/etude/{id}(id=${etude.id})}">details</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- Liste des etudes -->
+		</div>
+	</div>
+	<!-- Liste des appel d'offre -->
 
 	<!-- Edit Prestataire Modal HTML -->
 	<div th:insert="fragments/update-prestataire-form :: update-prestataire-modal"></div>

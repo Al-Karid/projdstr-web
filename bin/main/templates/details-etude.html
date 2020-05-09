@@ -197,6 +197,7 @@
 				<table class="table table-bordered table-hover" style="margin-top:15px;">
 					<thead>
 						<tr>
+							<th>#</th>
 							<th>Prestataire</th>
 							<!-- <th>Email</th> -->
 							<th>Siege</th>
@@ -206,7 +207,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="p : ${etude.prestataires}">
+						<tr th:each="p, i : ${etude.prestataires}">
+							<td th:text="${i.index+1}"></td>
 							<td th:text="${p.libelle}"></td>
 							<!-- <td th:text="${p.email}"></td> -->
 							<td th:text="${p.siege}"></td>

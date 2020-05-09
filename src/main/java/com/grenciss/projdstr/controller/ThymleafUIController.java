@@ -66,7 +66,8 @@ public class ThymleafUIController {
     public String detailsPrestataire(@PathVariable("id") long id ,Model model){
         
         Prestataire p = prestataires.findById(id).orElseThrow(() -> new ResourceNotFoundException("Prestataire", "id", id));
-        
+        List<Etude> etudesPrestataire = etudes.findByRealisateur(id);
+
         //Recuperation des etudes d'un prestataires
         List<Etude> allEtudes = etudes.findAll();
         List<Long> etudesId = new ArrayList<>();
@@ -85,6 +86,7 @@ public class ThymleafUIController {
         
         
         model.addAttribute("p", p);
+        model.addAttribute("realisations", etudesPrestataire);
         model.addAttribute("etudes", allPrestataireEtudes);
         return "details-prestataire";
     }
