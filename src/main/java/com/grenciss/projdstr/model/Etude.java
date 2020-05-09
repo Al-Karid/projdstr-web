@@ -79,9 +79,9 @@ public class Etude implements Serializable, Base {
         this.typeEtude = p.typeEtude;
         this.commentaire = p.commentaire;
         this.periodicite = p.periodicite;
-        this.satisfaction = p.satisfaction;
+        // this.satisfaction = p.satisfaction;
         this.dateAffectation = p.dateAffectation;
-        this.niveauSatisfaction = p.niveauSatisfaction;
+        // this.niveauSatisfaction = p.niveauSatisfaction;
         return this;
     }
 

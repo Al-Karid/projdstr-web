@@ -99,7 +99,6 @@ public class ThymleafUIController {
 
     @PostMapping("/save/etude")
     public String saveEtude(@Valid Etude etude, BindingResult result, Model model){
-        System.err.println(etude);
         Etude e = etudes.save(etude);
         return "redirect:/details/etude/"+e.getId();
     }
