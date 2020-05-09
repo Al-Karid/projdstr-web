@@ -29,16 +29,17 @@
                         <label>Périodicité</label>
                         <select class="form-control" id="periodicite" th:field="*{periodicite}" required>
                             <option th:value="${periodicite}" th:text="${periodicite}"></option>
-                            <option value="adhoc">adhoc</option>
-                            <option value="hebdomadaire">hebdomadaire</option>
-                            <option value="mensuelle">mensuelle</option>
-                            <option value="trimestrielle">trimestrielle</option>
-                            <option value="quatrimestrielle">quatrimestrielle</option>
-                            <option value="annuelle">quatrimestrielle</option>
+                            <option th:value="adhoc">Adhoc</option>
+                            <option th:value="hebdomadaire">Hebdomadaire</option>
+                            <option th:value="mensuelle">Mensuelle</option>
+                            <option th:value="trimestrielle">Trimestrielle</option>
+                            <option th:value="quatrimestrielle">Quatrimestrielle</option>
+                            <option th:value="annuelle">Annuelle</option>
                         </select>
                         <div class="form-group">
                             <label>Type de l'étude</label>
                             <select class="form-control" id="typeEtude" th:field="*{typeEtude}" required>
+                                <option th:value="${typeEtude}" thtxt="${typeEtude}"></option>
                                 <option th:value="quantitatif">Quantitatif</option>
                                 <option th:value="qualitatif">Qualitatif</option>
                                 <option th:value="mix">Mix(Qualitatif & Quantitatif Potentiel)</option>
