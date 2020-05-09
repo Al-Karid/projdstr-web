@@ -35,8 +35,12 @@ public class ThymleafUIController {
     public String index(Prestataire prestataire, Etude etude, Model model){
         long nb_p = prestataires.count();
         long nb_e = etudes.count();
+        List<Etude> e = etudes.findByRealisateur(0);
+        long nb_a = e.size();
+        
         model.addAttribute("nb_p", nb_p);
         model.addAttribute("nb_e", nb_e);
+        model.addAttribute("nb_a", nb_a);
         return "index";
     }
 
