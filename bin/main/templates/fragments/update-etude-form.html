@@ -1,4 +1,4 @@
-<div id="addEtudeModal" class="modal fade" th:fragment="add-etude-form">
+<div id="addEtudeModal" class="modal fade" th:fragment="update-etude-form">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="#" method="POST" th:action="@{/update/etude/{id}(id=${etude.id})}" th:object="${etude}">
