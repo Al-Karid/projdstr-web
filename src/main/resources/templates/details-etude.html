@@ -215,65 +215,7 @@
 	</div>
 
 	<!-- Edit Add Etudes Modal HTML -->
-	<div id="addEtudeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="#" method="POST" th:action="@{/update/etude/{id}(id=${etude.id})}" th:object="${etude}">
-					<div class="modal-header">
-						<h4 class="modal-title">Nouvelle Étude</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Étude</label>
-							<input type="text" id="libelle" class="form-control" th:field="*{libelle}">
-						</div>
-						<div class="form-group">
-							<label>Début</label>
-							<input th:field="*{dateDebut}" type="text" id="dateDebut" class="form-control"
-								placeholder="yyyy/mm/dd" required>
-						</div>
-						<div class="form-group">
-							<label>Date de Fin</label>
-							<input type="text" id="dateFin" class="form-control" th:field="*{dateFin}"
-								placeholder="yyyy-mm-dd">
-						</div>
-						<div class="form-group">
-							<label>Budget</label>
-							<input type="number" id="budget" class="form-control" th:field="*{budget}" required>
-						</div>
-						<div class="form-group">
-							<label>Périodicité</label>
-							<select class="form-control" id="periodicite" th:field="*{periodicite}" required>
-								<option th:value="${periodicite}" th:text="${periodicite}"></option>
-								<option value="adhoc">adhoc</option>
-								<option value="hebdomadaire">hebdomadaire</option>
-								<option value="mensuelle">mensuelle</option>
-								<option value="trimestrielle">trimestrielle</option>
-								<option value="quatrimestrielle">quatrimestrielle</option>
-								<option value="annuelle">quatrimestrielle</option>
-							</select>
-							<div class="form-group">
-								<label>Type de l'étude</label>
-								<select class="form-control" id="typeEtude" th:field="*{typeEtude}" required>
-									<option th:value="quantitatif">Quantitatif</option>
-									<option th:value="qualitatif">Qualitatif</option>
-									<option th:value="mix">Mix(Qualitatif & Quantitatif Potentiel)</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Commentaire</label>
-								<textarea class="form-control" id="commentaire" th:field="*{commentaire}"></textarea>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-							<input type="submit" class="btn btn-success" value="Valider">
-						</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	<div th:insert="fragments/add-etude-form :: add-etude-form"></div>
 	<!-- Edit Add Etudes Modal HTML -->
 
 	<!-- Edit Add Realisateur Modal -->
