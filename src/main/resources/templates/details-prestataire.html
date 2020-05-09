@@ -106,8 +106,8 @@
 					<tbody>
 						<tr th:each="etude : ${etudes}">
 							<td th:text="${etude.libelle}"></td>
-							<td th:text="${etude.dateDebut}"></td>
-							<td th:text="${etude.dateFin}"></td>
+							<td th:text="${#dates.format(etude.dateDebut,'yyyy-mm-dd')}"></td>
+							<td th:text="${#dates.format(etude.dateFin,'yyyy-mm-m-dd')}"></td>
 							<td th:text="${etude.budget}"></td>
 							<td th:text="${etude.satisfaction}" style="text-align: center;"></td>
 							<td style="text-align: center;">
