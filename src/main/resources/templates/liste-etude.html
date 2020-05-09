@@ -32,12 +32,12 @@
             </nav>
             <!-- Liste des etudes -->
             <div class="container">
-                <table class="table table-hover" style="margin-bottom: 0px;">
+                <table class="table table-hover" style="margin-bottom: 0px; text-align: center;">
                     <thead>
                         <tr>
-                            <th scope="col">Libelle</th>
-                            <th scope="col">Date debut</th>
-                            <th scope="col">Date fin</th>
+                            <th style="text-align: left;" scope="col">Etude</th>
+                            <th scope="col">Debut</th>
+                            <th scope="col">Fin</th>
                             <th scope="col">Budget</th>
                             <th scope="col">Type etude</th>
                             <th scope="col">Periodicite</th>
@@ -47,14 +47,14 @@
                     </thead>
                     <tbody>
                         <tr th:each="etude : ${etudes}">
-                            <td th:text="${etude.libelle}"></td>
+                            <td style="text-align: left;" th:text="${etude.libelle}"></td>
                             <td th:text="${etude.dateDebut}"></td>
                             <td th:text="${etude.dateFin}"></td>
                             <td th:text="${etude.budget}"></td>
                             <td th:text="${etude.typeEtude}"></td>
                             <td th:text="${etude.periodicite}"></td>
-                            <td th:text="${etude.satisfaction}"></td>
-                            <td><a href="#" th:href="@{/details/etude/{id}(id=${etude.id})}">details</a></td>
+                            <td style="text-align: center;" th:text="${etude.satisfaction}"></td>
+                            <td style="text-align: center;"><a href="#" th:href="@{/details/etude/{id}(id=${etude.id})}">details</a></td>
                         </tr>
                     </tbody>
                 </table>
