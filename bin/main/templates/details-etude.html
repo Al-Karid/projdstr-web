@@ -24,7 +24,7 @@
 			<!-- Navbar -->
 			<nav class="navbar navbar-dark bg-primary">
 				<a class="navbar-brand" href="#">
-					Details de l'étude
+					Détails de l'étude
 				</a>
 				<form class="form-inline">
 					<!-- Button trigger modal -->
@@ -43,11 +43,11 @@
 				<table class="table table-bordered" style="margin-top: 15px;">
 					<tbody>
 						<tr>
-							<td style="font-weight:bolder; text-transform:uppercase; color:orangered">Étude</td>
+							<td style="font-weight:bolder; text-transform:uppercase; color:orangered">Etude</td>
 							<td th:text="${etude.libelle}"></td>
 						</tr>
 						<tr>
-							<td style="font-weight:bolder; text-transform:uppercase">Début</td>
+							<td style="font-weight:bolder; text-transform:uppercase">Debut</td>
 							<td th:text="${#dates.format(etude.dateDebut, 'dd MMMM yyyy')}"></td>
 						</tr>
 						<tr>
@@ -63,11 +63,11 @@
 							<td th:text="${etude.satisfaction}"></td>
 						</tr>
 						<tr>
-							<td style="font-weight:bolder; text-transform:uppercase">Périodicite</td>
+							<td style="font-weight:bolder; text-transform:uppercase">Periodicite</td>
 							<td th:text="${etude.periodicite}" style="text-transform:capitalize"></td>
 						</tr>
 						<tr>
-							<td style="font-weight:bolder; text-transform:uppercase">Type de l'étude</td>
+							<td style="font-weight:bolder; text-transform:uppercase">Type de l'etude</td>
 							<td th:text="${etude.typeEtude}" style="text-transform:capitalize"></td>
 						</tr>
 						<tr>
@@ -158,10 +158,10 @@
 						<tr>
 							<th>Prestataire</th>
 							<!-- <th>Email</th> -->
-							<th>Siege</th>
+							<th>Siège</th>
 							<th>Personne à contacter</th>
 							<th>Contact</th>
-							<th style="text-align: center;">Details</th>
+							<th style="text-align: center;">Détails</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -200,7 +200,7 @@
 							<th>#</th>
 							<th>Prestataire</th>
 							<!-- <th>Email</th> -->
-							<th>Siege</th>
+							<th>Siège</th>
 							<th>Personne à contacter</th>
 							<th>Contact</th>
 							<th style="text-align: center;">Details</th>
