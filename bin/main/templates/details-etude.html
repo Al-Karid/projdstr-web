@@ -35,39 +35,39 @@
 				</form>
 			</nav>
 			<!-- Liste des etudes -->
-			<div class="container">
+			<div class="container" style="font-family:arial; font-size:20px">
 				<table class="table table-bordered" style="margin-top: 15px;">
 					<tbody>
 						<tr>
-							<td>Étude</td>
+							<td style="font-weight:bolder; text-transform:uppercase">Étude</td>
 							<td th:text="${etude.libelle}"></td>
 						</tr>
 						<tr>
-							<td>Début</td>
-							<td th:text="${etude.dateDebut}"></td>
+							<td style="font-weight:bolder; text-transform:uppercase">Début</td>
+							<td th:text="${#dates.format(etude.dateDebut, 'dd MMMM yyyy')}"></td>
 						</tr>
 						<tr>
-							<td>Fin</td>
-							<td th:text="${etude.dateFin}"></td>
+							<td style="font-weight:bolder; text-transform:uppercase">Fin</td>
+							<td th:text="${#dates.format(etude.dateFin, 'dd MMMM yyyy')}"></td>
 						</tr>
 						<tr>
-							<td>Budget</td>
+							<td style="font-weight:bolder; text-transform:uppercase">Budget</td>
 							<td th:text="${etude.budget}"></td>
 						</tr>
 						<tr>
-							<td>Satisfaction</td>
+							<td style="font-weight:bolder; text-transform:uppercase">Satisfaction</td>
 							<td th:text="${etude.satisfaction}"></td>
 						</tr>
 						<tr>
-							<td>Périodicite</td>
-							<td th:text="${etude.periodicite}"></td>
+							<td style="font-weight:bolder; text-transform:uppercase">Périodicite</td>
+							<td th:text="${etude.periodicite}" style="text-transform:capitalize"></td>
 						</tr>
 						<tr>
-							<td>Type de l'étude</td>
-							<td th:text="${etude.typeEtude}"></td>
+							<td style="font-weight:bolder; text-transform:uppercase">Type de l'étude</td>
+							<td th:text="${etude.typeEtude}" style="text-transform:capitalize"></td>
 						</tr>
 						<tr>
-							<td>Commentaire</td>
+							<td style="font-weight:bolder; text-transform:uppercase">Commentaire</td>
 							<td th:text="${etude.commentaire}"></td>
 						</tr>
 
@@ -152,21 +152,22 @@
 				<table class="table table-bordered table-hover" style="margin-top:15px;">
 					<thead>
 						<tr>
-							<th>Libelle</th>
-							<th>Email</th>
+							<th>Prestataire</th>
+							<!-- <th>Email</th> -->
 							<th>Siege</th>
 							<th>Personne à contacter</th>
 							<th>Contact</th>
-							<!-- <th>Actions</th> -->
+							<th style="text-align: center;">Details</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:if="${etude.realisateur!=0}">
 							<td th:text="${realisateur.libelle}"></td>
-							<td th:text="${realisateur.email}"></td>
+							<!-- <td th:text="${realisateur.email}"></td> -->
 							<td th:text="${realisateur.siege}"></td>
 							<td th:text="${realisateur.persAContacter1}"></td>
 							<td th:text="${realisateur.contact1}"></td>
+							<td style="text-align: center;"><a th:href="@{/details/prestataire/{id}(id=${etude.realisateur})}">details</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -174,7 +175,7 @@
 		</div>
 	</div>
 	<!-- Liste des candidats de l'appel d'offre -->
-	<div class="container" style="margin-top: 20px">
+	<div class="container" style="margin-top: 20px; margin-bottom:20px">
 		<div class="card">
 			<!-- Navbar -->
 			<nav class="navbar navbar-dark bg-primary">
@@ -192,21 +193,22 @@
 				<table class="table table-bordered table-hover" style="margin-top:15px;">
 					<thead>
 						<tr>
-							<th>Libelle</th>
-							<th>Email</th>
+							<th>Prestataire</th>
+							<!-- <th>Email</th> -->
 							<th>Siege</th>
 							<th>Personne à contacter</th>
 							<th>Contact</th>
-							<!-- <th>Actions</th> -->
+							<th style="text-align: center;">Details</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="p : ${etude.prestataires}">
 							<td th:text="${p.libelle}"></td>
-							<td th:text="${p.email}"></td>
+							<!-- <td th:text="${p.email}"></td> -->
 							<td th:text="${p.siege}"></td>
 							<td th:text="${p.persAContacter1}"></td>
 							<td th:text="${p.contact1}"></td>
+							<td style="text-align: center;"><a th:href="@{/details/prestataire/{id}(id=${p.id})}">details</a></td>
 						</tr>
 					</tbody>
 				</table>
