@@ -13,6 +13,7 @@ import com.grenciss.projdstr.repository.EtudeRepository;
 import com.grenciss.projdstr.repository.PrestataireRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +32,11 @@ public class ThymleafUIController {
     EtudeRepository etudes;
 
     @GetMapping("/")
-    public String index(Prestataire prestataire, Etude etude){
+    public String index(Prestataire prestataire, Etude etude, Model model){
+        long nb_p = prestataires.count();
+        long nb_e = etudes.count();
+        model.addAttribute("nb_p", nb_p);
+        model.addAttribute("nb_e", nb_e);
         return "index";
     }
 
@@ -48,7 +53,7 @@ public class ThymleafUIController {
 
     @GetMapping("/liste/prestataires")
     public String listPrestataire(Model model, Prestataire prestataire){
-        List<Prestataire> listPrestataire = prestataires.findAll();
+        List<Prestataire> listPrestataire = prestataires.findAll(Sort.by(Sort.Direction.ASC,"libelle"));
         model.addAttribute("prestataires", listPrestataire);
         return "liste-prestataire";
     }
@@ -126,7 +131,7 @@ public class ThymleafUIController {
 
     @GetMapping("/liste/etudes")
     public String listeEtude(Model model, Etude etude){
-        List<Etude> allEtudes = etudes.findAll();
+        List<Etude> allEtudes = etudes.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("etudes", allEtudes);
         return "liste-etude";
     }
