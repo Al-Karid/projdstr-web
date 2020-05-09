@@ -43,7 +43,7 @@
 							<th>Prestataire</th>
 							<th>Email</th>
 							<th>Siège</th>
-							<th>Personne a contacter</th>
+							<th>Contact</th>
 							<th>Telephone</th>
 							<!-- <th>Personne 2</th> -->
 							<!-- <th>Contact 2</th> -->
@@ -53,7 +53,7 @@
 					</thead>
 					<tbody>
 						<tr th:each="p, i : ${prestataires}">
-							<td th:text="${i.index}"></td>
+							<td th:text="${i.index+1}"></td>
 							<td th:text="${p.libelle}" class="text-truncate"></td>
 							<td th:text="${p.email}"></td>
 							<td style="display: block;" th:text="${p.siege}"></td>

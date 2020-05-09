@@ -11,40 +11,53 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Gestion dstr</title>
+    <style>
+        .status {
+            font-size: 100px;
+            cursor: default;
+        }
+
+        .card-header {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- Add header -->
+    <div th:insert="fragments/header :: header"></div>
+    <!-- Add header -->
+
     <div class="container" style="margin-top: 20px;">
         <!-- Main jombotron -->
         <div class="jumbotron">
-            <h1 class="display-4">Bienvenue !</h1>
-            <p class="lead">Une simple application de gestion des prestataires de la DSTR</p>
+            <h1 class="display-4" style="color: orange; text-align: center">Bonjour !</h1>
+            <p class="lead" style="text-align: center">Une simple application de gestion des prestataires de la DSTR</p>
             <hr class="my-4">
             <p class="lead">
                 <div class="row">
-                    <div class="card border-primary mb-3 mx-auto" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                    <div class="card border-primary mb-3 mx-auto text-center" style="max-width: 18rem;">
+                        <div class="card-header">Appels d'offres</div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title status" style="font-size: 100px;">999</h5>
+                            <!-- <p class="card-text">1</p> -->
                         </div>
                     </div>
-                    <div class="card border-primary mb-3 mx-auto" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                    <div class="card border-primary mb-3 mx-auto text-center" style="max-width: 18rem;">
+                        <div class="card-header">Etudes</div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title status" style="font-size:100px">999</h5>
+                            <!-- <p class="card-text"></p> -->
                         </div>
                     </div>
-                    <div class="card border-primary mb-3 mx-auto" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
+                    <div class="card border-primary mb-3 mx-auto text-center" style="max-width: 18rem;">
+                        <div class="card-header">Prestataires</div>
                         <div class="card-body text-primary">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title status" style="font-size: 100px">999</h5>
+                            <!-- <p class="card-text"></p> -->
                         </div>
                     </div>
             </p>
@@ -52,7 +65,7 @@
     </div>
 
     <!-- Action list -->
-    <div class="card text-white bg-light mb-3">
+    <!-- <div class="card text-white bg-light mb-3">
         <div class="card-body">
             <div class="card-title" style="color: black; text-decoration: underline;">
                 <h3>Prestataires</h3>
@@ -62,8 +75,8 @@
                 Nouveau
             </button>
         </div>
-    </div>
-    <div class="card text-white bg-light mb-3">
+    </div> -->
+    <!-- <div class="card text-white bg-light mb-3">
         <div class="card-body">
             <div class="card-title" style="color: black; text-decoration: underline;">
                 <h3>Etudes</h3>
@@ -73,15 +86,15 @@
                 Nouveau
             </button>
         </div>
-    </div>
+    </div> -->
 
-	<!-- Save Prestataire Modal HTML -->
-	<div th:insert="fragments/save-prestataire-form :: save-prestataire-modal"></div>
-	<!-- Save Prestataire Modal HTML -->
+    <!-- Save Prestataire Modal HTML -->
+    <div th:insert="fragments/save-prestataire-form :: save-prestataire-modal"></div>
+    <!-- Save Prestataire Modal HTML -->
 
-	<!-- Edit Add Etudes Modal HTML -->
-	<div th:insert="fragments/save-etude-form :: save-etude-form"></div>
-	<!-- Edit Add Etudes Modal HTML -->
+    <!-- Edit Add Etudes Modal HTML -->
+    <div th:insert="fragments/save-etude-form :: save-etude-form"></div>
+    <!-- Edit Add Etudes Modal HTML -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
