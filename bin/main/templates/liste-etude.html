@@ -41,6 +41,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Etude</th>
+                            <th scope="col">Etat</th>
                             <th scope="col">Début</th>
                             <!-- <th scope="col">Fin</th> -->
                             <th scope="col">Budget</th>
@@ -54,6 +55,7 @@
                         <tr th:each="etude, i : ${etudes}">
                             <td th:text="${i.index+1}"></td>
                             <td style="text-align: left;" th:text="${etude.libelle}"></td>
+                            <td th:text="${etude.realisateur==0}? 'Appel d\'offre' : 'Etude'"></td>
                             <td th:text="${#dates.format(etude.dateDebut,'yyyy-mm-dd')}"></td>
                             <!-- <td th:text="${#dates.format(etude.dateFin,'yyyy-mm-dd')}"></td> -->
                             <td th:text="${etude.budget}"></td>
