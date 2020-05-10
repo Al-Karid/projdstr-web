@@ -39,7 +39,7 @@ public class ThymleafUIController {
         long nb_a = e.size();
         
         model.addAttribute("nb_p", nb_p);
-        model.addAttribute("nb_e", nb_e);
+        model.addAttribute("nb_e", nb_e-nb_a);
         model.addAttribute("nb_a", nb_a);
         return "index";
     }
