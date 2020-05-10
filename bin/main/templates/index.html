@@ -22,6 +22,12 @@
             font-weight: bold;
             color: blue;
         }
+        .card-body {
+            min-width: 200px !important;
+        }
+        .card{
+            border:0px;
+        }
     </style>
 </head>
 
@@ -43,21 +49,21 @@
                         <div class="card-header">Appels d'offres</div>
                         <div class="card-body text-primary">
                             <h5 class="card-title status" style="font-size: 100px;" th:text="${nb_a}">999</h5>
-                            <!-- <p class="card-text">1</p> -->
+                            <p class="card-text">En cours</p>
                         </div>
                     </div>
                     <div class="card border-primary mb-3 mx-auto text-center" style="max-width: 18rem;">
                         <div class="card-header">Etudes</div>
                         <div class="card-body text-primary">
                             <h5 class="card-title status" style="font-size:100px" th:text="${nb_e}">999</h5>
-                            <!-- <p class="card-text"></p> -->
+                            <p class="card-text">Réaliatées</p>
                         </div>
                     </div>
                     <div class="card border-primary mb-3 mx-auto text-center" style="max-width: 18rem;">
                         <div class="card-header">Prestataires</div>
                         <div class="card-body text-primary">
                             <h5 class="card-title status" style="font-size: 100px" th:text="${nb_p}">999</h5>
-                            <!-- <p class="card-text"></p> -->
+                            <p class="card-text">Au total</p>
                         </div>
                     </div>
             </p>
